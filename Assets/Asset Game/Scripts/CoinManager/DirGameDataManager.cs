@@ -14,15 +14,17 @@ public class DirGameDataManager : PersistentSingleton<DirGameDataManager>
         Application.targetFrameRate = Mathf.Max(60, Screen.currentResolution.refreshRate);
     }
 
+    
+
+    public void ResetData()
+    {
+        playerData.ResetData();
+    }
+    
     private void OnEnable()
     {
         playerData = new GameObject(Constant.DataKey_PlayerData).AddComponent<PlayerData>();
         playerData.transform.parent = transform;
         playerData.Init();
-    }
-
-    public void ResetData()
-    {
-        playerData.ResetData();
     }
 }

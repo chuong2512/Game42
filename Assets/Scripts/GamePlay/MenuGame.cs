@@ -10,6 +10,11 @@ public class MenuGame : MonoBehaviour
     {
         
     }
+    
+    public void Play()
+    {
+        SceneManager.LoadScene("Game");
+    }
 
     // Update is called once per frame
     void Update()
@@ -22,8 +27,5 @@ public class MenuGame : MonoBehaviour
         Application.Quit();
     }
 
-    public void Play()
-    {
-        SceneManager.LoadScene("Game");
-    }
+    
 }

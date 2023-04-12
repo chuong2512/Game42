@@ -22,19 +22,7 @@ public class PlayerController : Singleton<PlayerController>
 
     public GameObject act;
 
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.CompareTag("Enemy"))
-        {
-            if (!act.activeSelf)
-            {
-                act.SetActive(true);
-            }
-
-            TheLevelTMP.Instance.Add();
-            Destroy(col.gameObject);
-        }
-    }
+    
 
     public bool onButton;
     Vector3 offset;
@@ -66,6 +54,20 @@ public class PlayerController : Singleton<PlayerController>
                 Rigidbody2D.velocity = Vector2.zero;
                 onButton = false;
             }
+        }
+    }
+    
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Enemy"))
+        {
+            if (!act.activeSelf)
+            {
+                act.SetActive(true);
+            }
+
+            TheLevelTMP.Instance.Add();
+            Destroy(col.gameObject);
         }
     }
 

@@ -40,21 +40,7 @@ public class PlayerData : BaseData
         }
 
 
-    public override void ResetData()
-    {
-        point = 0;
-        intHelp = 0;
-        intLevel = 0;
-        currentSkin = 0;
-        listSkins = new bool[Constant.countSong];
-
-        for (int i = 0; i < 1; i++)
-        {
-            listSkins[i] = true;
-        }
-
-        Save();
-    }
+    
 
     public void SetPoint(int pointt)
     {
@@ -113,5 +99,21 @@ public class PlayerData : BaseData
         Save();
     }
 
+    
+    public override void ResetData()
+    {
+        point = 0;
+        intHelp = 0;
+        intLevel = 0;
+        currentSkin = 0;
+        listSkins = new bool[Constant.countSong];
+
+        for (int i = 0; i < 1; i++)
+        {
+            listSkins[i] = true;
+        }
+
+        Save();
+    }
     
 }

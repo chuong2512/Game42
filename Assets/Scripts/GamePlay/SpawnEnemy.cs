@@ -17,6 +17,14 @@ public class SpawnEnemy : MonoBehaviour
     }
 
     // Update is called once per frame
+    
+
+    private void Spawn()
+    {
+        var enemy = Instantiate(enemies[Random.Range(0, enemies.Length)],
+            points[Random.Range(0, points.Length)].position, points[Random.Range(0, points.Length)].rotation);
+    }
+    
     void Update()
     {
         if (GameManager.Instance.currentState == State.Playing)
@@ -30,11 +38,5 @@ public class SpawnEnemy : MonoBehaviour
                 Spawn();
             }
         }
-    }
-
-    private void Spawn()
-    {
-        var enemy = Instantiate(enemies[Random.Range(0, enemies.Length)],
-            points[Random.Range(0, points.Length)].position, points[Random.Range(0, points.Length)].rotation);
     }
 }

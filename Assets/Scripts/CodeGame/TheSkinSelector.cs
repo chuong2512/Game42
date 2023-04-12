@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SkinSelector : MonoBehaviour
+public class TheSkinSelector : MonoBehaviour
 {
     private PlayerData playerData; //todo delete
     private DirGameDataManager dirGameData; 
@@ -25,6 +25,16 @@ public class SkinSelector : MonoBehaviour
         
         skinItems[currentSkin].Choose();
     }
+    public void unSkinSekectir(int index)
+    {
+        if (!playerData.listSkins[index])
+        {
+            playerData.SubHelp(Constant.priceUnlockSkin);
+        }
+        
+        skinItems[index].Unlock();
+        playerData.listSkins[index] = true;
+    }
     
     public void SkinChoosen(int index)
     {
@@ -38,7 +48,7 @@ public class SkinSelector : MonoBehaviour
             {
                 return;
             }
-            unSkin(index);
+            unSkinSekectir(index);
         }
         
         skinItems[currentSkin].UnChoose();
@@ -48,15 +58,6 @@ public class SkinSelector : MonoBehaviour
         //todo add Playerdata
     }
 
-    public void unSkin(int index)
-    {
-        if (!playerData.listSkins[index])
-        {
-            playerData.SubHelp(Constant.priceUnlockSkin);
-        }
-        
-        skinItems[index].Unlock();
-        playerData.listSkins[index] = true;
-    }
+    
 
 }

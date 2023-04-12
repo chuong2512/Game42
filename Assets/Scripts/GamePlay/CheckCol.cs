@@ -8,6 +8,6 @@ public class CheckCol : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        transform.position = new Vector3 (side * (Camera.main.orthographicSize * Camera.main.aspect + 0.5f), 0.0F, transform.position.z);
+        transform.position = new Vector3 (side * (Camera.main.orthographicSize * Camera.main.aspect + 5f), 0.0F, transform.position.z);
     }
 }

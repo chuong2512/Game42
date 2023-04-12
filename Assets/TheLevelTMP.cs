@@ -10,28 +10,20 @@ public class TheLevelTMP : Singleton<TheLevelTMP>
 
     public int point;
 
-    public float time, timecount = 1;
 
     // Start is called before the first frame update
     void Start()
     {
-        time = timecount;
         point = 0;
         textMeshProUgui.SetText($"0");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Add()
     {
         if (GameManager.Instance.currentState == State.Playing)
         {
-            time -= Time.deltaTime;
-
-            if (time < 0)
-            {
-                time = timecount;
-                textMeshProUgui.SetText($"{point}");
-            }
+            point++;
+            textMeshProUgui.SetText($"{point}");
         }
     }
 }

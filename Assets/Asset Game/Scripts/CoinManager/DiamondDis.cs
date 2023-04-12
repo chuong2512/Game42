@@ -16,12 +16,12 @@ public class DiamondDis : MonoBehaviour
    void Start()
       {
          DirGameDataManager.Ins.playerData.onChangeDiamond += i => OnChangeHelp(i);
-         diamondTmp.text = $"{DirGameDataManager.Ins.playerData.intHelp}";
+         diamondTmp.text = $"x{DirGameDataManager.Ins.playerData.intHelp}";
       }
 
    private void OnChangeHelp(int i)
    {
-      diamondTmp.text = $"{i}";
+      diamondTmp.text = $"x{i}";
    }
    
    void OnDestroy()

@@ -23,7 +23,8 @@ public class GameManager : Singleton<GameManager>
     public TextMeshProUGUI point, highPoint;
 
     public GameObject tap;
-    
+    public GameObject tap1;
+
     public GameObject[] respawns;
 
     public void SetState(State state)
@@ -51,6 +52,7 @@ public class GameManager : Singleton<GameManager>
         {
             SetState(State.Playing);
             tap.SetActive(false);
+            tap1.SetActive(true);
             PlayerController.Instance.Play();
         }
     }
@@ -75,16 +77,21 @@ public class GameManager : Singleton<GameManager>
 
         SetState(State.Lose);
 
-        point.SetText($"Score : {TheLevelTMP.Instance.point}");
+        point.SetText($"Your Eggs : {TheLevelTMP.Instance.point}");
 
         DirGameDataManager.Ins.playerData.SetPoint(TheLevelTMP.Instance.point);
 
-        highPoint.SetText($"High Score : {DirGameDataManager.Ins.playerData.point}");
+        highPoint.SetText($"Best Eggs : {DirGameDataManager.Ins.playerData.point}");
     }
 
     public void ReStart()
     {
         SceneManager.LoadScene("Game");
+    }
+
+    public void Home()
+    {
+        SceneManager.LoadScene("Menu");
     }
 
     public void Continue()

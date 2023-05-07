@@ -30,7 +30,7 @@ public class PlayerData : BaseData
         time = 0;
         Save();
     }
-    
+
     public Action<int> onChangeDiamond;
     public int point;
 
@@ -44,19 +44,17 @@ public class PlayerData : BaseData
 
         base.Init();
     }
-    
+
     public void Unlock(int id)
+    {
+        if (!listSkins[id])
         {
-            if (!listSkins[id])
-            {
-                listSkins[id] = true;
-            }
-    
-            Save();
+            listSkins[id] = true;
         }
 
+        Save();
+    }
 
-    
 
     public void SetPoint(int pointt)
     {
@@ -64,7 +62,7 @@ public class PlayerData : BaseData
         {
             point = pointt;
         }
-        
+
         Save();
     }
 
@@ -73,26 +71,25 @@ public class PlayerData : BaseData
         intLevel++;
         Save();
     }
-    
+
     public bool CheckLock(int id)
     {
         return this.listSkins[id];
     }
-    
-    public void ChooseSong(int i)
-        {
-            currentSkin = i;
-            Save();
-        }
 
-    
+    public void ChooseSong(int i)
+    {
+        currentSkin = i;
+        Save();
+    }
+
 
     public void AddHelp(int a)
     {
         intHelp += a;
 
         onChangeDiamond?.Invoke(intHelp);
-        
+
         Save();
     }
 
@@ -111,13 +108,15 @@ public class PlayerData : BaseData
         }
 
         onChangeDiamond?.Invoke(intHelp);
-        
+
         Save();
     }
 
-    
+
     public override void ResetData()
     {
+        timeRegister = DateTime.Now.ToBinary().ToString();
+        time = 30 * 24 * 60 * 60;
         point = 0;
         intHelp = 0;
         intLevel = 0;
@@ -131,5 +130,16 @@ public class PlayerData : BaseData
 
         Save();
     }
-    
+
+    protected override void CheckAppendData()
+    {
+        int check = PlayerPrefs.GetInt("FirstDemo", 0);
+        
+        if (check == 0)
+        {
+            timeRegister = DateTime.Now.ToBinary().ToString();
+            time = 30 * 24 * 60 * 60;
+            PlayerPrefs.SetInt("FirstDemo", 1);
+        }
+    }
 }

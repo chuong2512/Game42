@@ -44,13 +44,7 @@ public class RegisterManager : MonoBehaviour
 
     private void OnClickButton()
     {
-        if (checkTime.TotalSeconds <= 0)
-        {
-        }
-        else
-        {
-            SceneManager.LoadScene("Menu");
-        }
+        gameObject.SetActive(false);
     }
 
     public void OnPressDown(int i)
@@ -146,13 +140,10 @@ public class RegisterManager : MonoBehaviour
         if (checkTime.TotalSeconds < 1)
         {
             textRemain.text = "You need to pay to continue";
-            buttonContinue.interactable = false;
             DirGameDataManager.Ins.playerData.ResetTime();
         }
         else
         {
-            buttonContinue.interactable = true;
-
             string answer = string.Format("{0:D1}Day: {1:D2}h:{2:D2}m:{3:D2}s",
                 checkTime.Days,
                 checkTime.Hours,
